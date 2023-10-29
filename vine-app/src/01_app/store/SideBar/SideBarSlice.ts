@@ -1,12 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-export interface SideBar {
-  expanded: boolean
-}
-
-export interface SideBarData {
-  data: Array<string>,
-}
 
 export const sideBarSlice = createSlice({
   name: "sideBar",

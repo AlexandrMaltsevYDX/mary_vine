@@ -1,29 +1,22 @@
-import React , {useState} from 'react';
-import AppBar from '@mui/material/AppBar';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import Toolbar from '@mui/material/Toolbar';
+import React, { useState } from "react";
+import AppBar from "@mui/material/AppBar";
+import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
+import Toolbar from "@mui/material/Toolbar";
+import SideBarToggleButton from "~widgets/SideBarToggleButton/SideBarToggleButton";
 
 
+// tollar провайдит цвет фона
+const TopBar: React.FC = () => {
+  const testHandle = () => {
+    console.log("hello");
+  };
 
-interface TopBarProps {
-    children: React.ReactNode
-}
-
-const TopBar: React.FC<TopBarProps> = ({children}) =>  {
   return (
-      <AppBar
-        position="fixed"
-        // sx={{
-        //   width: { sm: `calc(100% - ${drawerWidth}px)` },
-        //   ml: { sm: `${drawerWidth}px` },
-        // }}
-      >
-        <Toolbar>
-            {children}
-        </Toolbar>
-      </AppBar>
+    <Toolbar sx={{backgroundColor:"red"}}>
+      <SideBarToggleButton handl={testHandle} />
+    </Toolbar>
   );
-}
+};
 
-export default TopBar
+export default TopBar;
