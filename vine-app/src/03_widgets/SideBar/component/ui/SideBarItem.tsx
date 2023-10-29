@@ -1,16 +1,4 @@
 import React from "react";
-import ListSubheader from "@mui/material/ListSubheader";
-import List from "@mui/material/List";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import Collapse from "@mui/material/Collapse";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import DraftsIcon from "@mui/icons-material/Drafts";
-import SendIcon from "@mui/icons-material/Send";
-import ExpandLess from "@mui/icons-material/ExpandLess";
-import ExpandMore from "@mui/icons-material/ExpandMore";
-import StarBorder from "@mui/icons-material/StarBorder";
 import Box from "@mui/material/Box";
 import ListItem from "@mui/material/ListItem";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,13 +8,15 @@ import {
 } from "~store/SideBar/SideBarSlice";
 
 import { RootState } from "~store/store";
+import { ListItemConstructor } from "./ListItem";
 
-interface SideBarItemInterface {
+export interface SideBarItemInterface {
   name: string;
   root: boolean;
   level?: number;
   // url?: string;
   subItems?: SideBarItemInterface[];
+  open?: boolean;
 }
 
 const SideBarItem: React.FC<SideBarItemInterface> = ({
@@ -38,27 +28,50 @@ const SideBarItem: React.FC<SideBarItemInterface> = ({
 }) => {
   const [open, setOpen] = React.useState(true);
 
+  const commonProps = { name, root, level, subItems, open };
+
   const handleClick = () => {
     console.log(open);
     setOpen(!open);
   };
 
+  const isSideBarExpanded = useSelector(
+    (state: RootState) => state.sideBar.expanded,
+  );
+
   return (
     <>
-      <ListItem sx={{ padding: "0px", height: "80px" }}>
-        <ListItemButton
+      <ListItem  onClick={() => handleClick()} sx={{ padding: "0px", height: "80px" }}>
+        <ListItemConstructor {...commonProps}/>
+        {/* <ListItemButton
           sx={{ height: "80px" }}
-          onClick={() => handleClick()}
         >
-          <ListItemIcon>{root && <SendIcon />}</ListItemIcon>
+          <ListItemIcon>
+            {root && (
+              <SendIcon
+                sx={{
+                  fontSize: "16px",
+                  color: "primary.contrastText",
+                }}
+              />
+            )}
+          </ListItemIcon>
           <ListItemText
             primary={name}
-            // secondary="жопа"
-            primaryTypographyProps={{fontSize: "20px", fontFamily: "Roboto"}}
-            sx={{ pl: `${level * 12}px`, pr: "8px"}}
+            // secondary="залупа лисы"
+            primaryTypographyProps={{
+              fontWeight: "600",
+              color: "primary.contrastText",
+            }}
+            sx={{ pl: `${level * 12}px`, pr: "8px" }}
           />
-          {subItems && (open ? <ExpandLess /> : <ExpandMore />)}
-        </ListItemButton>
+          {subItems &&
+            (open ? (
+              <ExpandLess sx={{ color: "primary.contrastText" }} />
+            ) : (
+              <ExpandMore sx={{ color: "primary.contrastText" }} />
+            ))}
+        </ListItemButton> */}
       </ListItem>
       <Box
         className="er"
