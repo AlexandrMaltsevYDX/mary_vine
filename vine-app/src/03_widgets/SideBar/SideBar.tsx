@@ -16,14 +16,39 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import SideBarItem from "./component/ui/SideBarItem";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  toggleSideBar,
+  getSidbarData,
+} from "~store/SideBar/SideBarSlice";
+
+import { RootState } from "~store/store";
 
 const SideBar: React.FC = () => {
+  const sideBarData = useSelector(
+    (state: RootState) => state.sideBar.data,
+  );
+
   return (
-    <Toolbar
-      sx={{ bgcolor: "primary.main", flexDirection: "column", padding: "0px" }}
+    <List
+      sx={{
+        width: "100%",
+        padding: "0px",
+        bgcolor: "primary.main",
+      }}
     >
-      <SideBarItem />
-    </Toolbar>
+      <>
+        {sideBarData.map((item, index) => (
+          <SideBarItem
+            key={index}
+            name={item.name}
+            root={item.root}
+            subItems={item.subItems}
+            level={0}
+          />
+        ))}
+      </>
+   </List>
   );
 };
 

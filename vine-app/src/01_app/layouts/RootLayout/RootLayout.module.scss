@@ -4,7 +4,6 @@
     flex-direction: column;
     width: 100%;
     height: 100%;
-    padding: 5px;
     @content;
 }
 
@@ -12,7 +11,7 @@
 .RootLayoutGrid {
     display: grid;
     height: 100vh;
-    grid-template-columns: 250px 1fr;
+    grid-template-columns: 300px 1fr;
     grid-template-rows: 80px 1fr;
     grid-template-areas:
         "sidebar topbar"

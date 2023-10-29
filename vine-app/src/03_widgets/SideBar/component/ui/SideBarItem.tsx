@@ -11,70 +11,77 @@ import SendIcon from "@mui/icons-material/Send";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import StarBorder from "@mui/icons-material/StarBorder";
+import Box from "@mui/material/Box";
+import ListItem from "@mui/material/ListItem";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  toggleSideBar,
+  getSidbarData,
+} from "~store/SideBar/SideBarSlice";
 
-const SideBarItem: React.FC = () => {
+import { RootState } from "~store/store";
+
+interface SideBarItemInterface {
+  name: string;
+  root: boolean;
+  level?: number;
+  // url?: string;
+  subItems?: SideBarItemInterface[];
+}
+
+const SideBarItem: React.FC<SideBarItemInterface> = ({
+  name,
+  root,
+  level = 1,
+  // url,
+  subItems,
+}) => {
   const [open, setOpen] = React.useState(true);
 
   const handleClick = () => {
+    console.log(open);
     setOpen(!open);
   };
+
   return (
-    <List
-      sx={{
-        width: "100%",
-        padding: "0px",
-        bgcolor: "primary.main",
-      }}
-      component="nav"
-      aria-labelledby="nested-list-subheader"
-      subheader={
-        <ListSubheader component="div" id="nested-list-subheader">
-          Nested List Items
-        </ListSubheader>
-      }
-    >
-      <ListItemButton>
-        <ListItemIcon>
-          <SendIcon />
-        </ListItemIcon>
-        <ListItemText primary="Sent mail" />
-      </ListItemButton>
-      <ListItemButton>
-        <ListItemIcon>
-          <DraftsIcon />
-        </ListItemIcon>
-        <ListItemText primary="Drafts" />
-      </ListItemButton>
-      <ListItemButton onClick={handleClick}>
-        <ListItemIcon>
-          <InboxIcon />
-        </ListItemIcon>
-        <ListItemText primary="Inbox" />
-        {open ? <ExpandLess /> : <ExpandMore />}
-      </ListItemButton>
-      <Collapse in={open} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
-            <ListItemIcon>
-              <StarBorder />
-            </ListItemIcon>
-            <ListItemText primary="Starred" />
-            {open ? <ExpandLess /> : <ExpandMore />}
-          </ListItemButton>
-        </List>
-      </Collapse>
-      <Collapse in={open} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItemButton >
-            <ListItemIcon>
-              {/* <StarBorder /> */}
-            </ListItemIcon>
-            <ListItemText sx={{ pl: 0 }} primary="Starred" />
-            {open ? <ExpandLess /> : <ExpandMore />}
-          </ListItemButton>
-        </List>
-      </Collapse>
-    </List>
+    <>
+      <ListItem sx={{ padding: "0px", height: "80px" }}>
+        <ListItemButton
+          sx={{ height: "80px" }}
+          onClick={() => handleClick()}
+        >
+          <ListItemIcon>{root && <SendIcon />}</ListItemIcon>
+          <ListItemText
+            primary={name}
+            // secondary="жопа"
+            primaryTypographyProps={{fontSize: "20px", fontFamily: "Roboto"}}
+            sx={{ pl: `${level * 12}px`, pr: "8px"}}
+          />
+          {subItems && (open ? <ExpandLess /> : <ExpandMore />)}
+        </ListItemButton>
+      </ListItem>
+      <Box
+        className="er"
+        sx={{
+          width: "100%",
+          padding: "0px",
+          bgcolor: "primary.main",
+          visibility: open ? "visible" : "hidden",
+          overflow: open ? "visible" : "hidden",
+          height: open ? "auto" : "0px",
+        }}
+      >
+        {subItems?.map((item, index) => (
+          <SideBarItem
+            key={index}
+            name={item.name}
+            root={item.root}
+            subItems={item.subItems}
+            level={level + 1}
+          />
+        ))}
+      </Box>
+    </>
   );
 };
 
