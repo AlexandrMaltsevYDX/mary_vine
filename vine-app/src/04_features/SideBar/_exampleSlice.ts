@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+// import type { PayloadAction } from '@reduxjs/toolkit'
 
 export interface SideBar {
   expanded: boolean
@@ -7,6 +8,24 @@ export interface SideBar {
 export interface SideBarData {
   data: Array<string>,
 }
+
+// const TOGGLE_SIDEBAR = 'SHOW_SIDEBAR' //! action
+
+// export function toggleSidebar(isShow) { //! action
+//   return {
+//     type: TOGGLE_SIDEBAR,
+//     payload: { isShow },
+//   }
+// }
+
+// export const getSidbarData = (data: SideBarData) => { //! action
+//   return {
+//     type: SIDBAR_DATA,
+//     payload : { data }
+//   }
+// }
+
+
 
 export const sideBarSlice = createSlice({
   name: "sideBar",

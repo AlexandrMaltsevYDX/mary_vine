@@ -1,0 +1,41 @@
+@mixin gridcell($aria) {
+    grid-area: $aria;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    @content;
+}
+
+
+.RootLayoutGrid {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: 80px 1fr;
+    grid-template-areas:
+        "sidebar topbar"
+        "sidebar content"
+    ;
+}
+
+.TopbarCell {
+    @include gridcell(topbar) {
+        background-color: blue;
+    }
+}
+
+.SidebarCell {
+    @include gridcell(sidebar) {
+        background-color: blue;
+    }
+}
+
+.ContentCell {
+    @include gridcell(content) {
+        background-color: white;
+    }
+}
+
+
+
