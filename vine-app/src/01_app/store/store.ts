@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import SideBarSlice from '~features/SideBar/SideBarSlice' // ! <= именнованый редусер
+import SideBarSlice from '~store/SideBar/SideBarSlice' // ! <= именнованый редусер
 
 export const store = configureStore({
   reducer: {

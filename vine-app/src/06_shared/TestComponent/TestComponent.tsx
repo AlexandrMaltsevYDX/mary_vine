@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import SendIcon from '@mui/icons-material/Send';
 import { useDispatch, useSelector } from "react-redux";
-import { toggleSideBar, getSidbarData } from "~features/SideBar/SideBarSlice";
+import { toggleSideBar, getSidbarData } from "~store/SideBar/SideBarSlice";
 import { RootState } from "~store/store";
 
 
