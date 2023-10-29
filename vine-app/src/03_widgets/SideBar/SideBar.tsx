@@ -15,9 +15,16 @@ import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import SideBarItem from "./component/ui/SideBarItem";
 
-const SideBar = () => {
-  return <div>Sidebar</div>;
+const SideBar: React.FC = () => {
+  return (
+    <Toolbar
+      sx={{ bgcolor: "primary.main", flexDirection: "column", padding: "0px" }}
+    >
+      <SideBarItem />
+    </Toolbar>
+  );
 };
 
 export default SideBar;

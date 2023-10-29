@@ -4,6 +4,7 @@ import Routing from "~routing/Routing";
 import styles from "./RootLayout.module.scss"
 import Content from '~widgets/Content/Content';
 import TopBar from '~widgets/TopBar/TopBar';
+import SideBar from '~widgets/SideBar/SideBar';
 
 
 
@@ -16,7 +17,7 @@ const RootLayout: React.FC = () =>  {
       <div className={styles.RootLayoutGrid}>
         <div className={styles.TopbarCell}><TopBar/></div>
         <div className={styles.ContentCell}><Content/></div>
-        <div className={styles.SidebarCell}>sidebar</div>
+        <div className={styles.SidebarCell}><SideBar/></div>
       </div>
   );
 }

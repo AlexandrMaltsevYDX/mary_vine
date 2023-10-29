@@ -4,7 +4,7 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import SideBarToggleButton from "~widgets/SideBarToggleButton/SideBarToggleButton";
-
+import Box from "@mui/material/Box"
 
 // tollar провайдит цвет фона
 const TopBar: React.FC = () => {
@@ -13,7 +13,7 @@ const TopBar: React.FC = () => {
   };
 
   return (
-    <Toolbar sx={{backgroundColor:"red"}}>
+    <Toolbar sx={{ bgcolor: 'primary.main', height: "100%"}}>
       <SideBarToggleButton handl={testHandle} />
     </Toolbar>
   );
