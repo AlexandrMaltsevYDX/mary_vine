@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import AppBar from "@mui/material/AppBar";
-import Routing from "~routing/Routing";
 import styles from "./RootLayout.module.scss";
 import Content from "~widgets/Content/Content";
 import TopBar from "~widgets/TopBar/TopBar";
