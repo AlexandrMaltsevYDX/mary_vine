@@ -14,7 +14,7 @@ export const sideBarSlice = createSlice({
         url: "/",
       },
       {
-        name: "Управление Объектами",
+        name: "Управление",
         root: true,
         url: "/objects",
         subItems: [

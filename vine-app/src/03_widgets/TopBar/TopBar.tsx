@@ -8,15 +8,12 @@ import Box from "@mui/material/Box";
 
 // tollar провайдит цвет фона
 const TopBar: React.FC = () => {
-  const testHandle = () => {
-    console.log("hello");
-  };
-
   return (
     <Toolbar
-      sx={{ bgcolor: "primary.dark", height: "100%", }}
+      disableGutters
+      sx={{ padding: "0", bgcolor: "primary.dark", height: "100%" }}
     >
-      <SideBarToggleButton handl={testHandle} />
+      <SideBarToggleButton />
     </Toolbar>
   );
 };

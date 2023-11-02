@@ -1,6 +1,6 @@
-import { IconButton } from "@mui/material"
-import Menu from "@mui/icons-material/Menu"
-import React from "react"
+import { IconButton } from "@mui/material";
+import Menu from "@mui/icons-material/Menu";
+import React from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -10,20 +10,21 @@ import {
 
 import { RootState } from "~store/store";
 
-
 // interface SideBarToggleButtonProps {
 //     handl: Function
 // }
 
-const SideBarToggleButton : React.FC = () => {
-    const dispatch = useDispatch();
-    
-    return (
-        <IconButton onClick={() => dispatch(toggleSideBar())}>
-            <Menu/>
-        </IconButton>
-    )
+const SideBarToggleButton: React.FC = () => {
+  const dispatch = useDispatch();
 
-}
+  return (
+    <IconButton
+      sx={{ padding: "28px", borderRadius: "0px" }}
+      onClick={() => dispatch(toggleSideBar())}
+    >
+      <Menu />
+    </IconButton>
+  );
+};
 
-export default SideBarToggleButton
+export default SideBarToggleButton;

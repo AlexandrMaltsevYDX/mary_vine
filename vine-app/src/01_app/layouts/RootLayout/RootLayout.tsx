@@ -22,6 +22,7 @@ const RootLayout: React.FC = () => {
     (state: RootState) => state.sideBar.expanded,
   );
 
+  
   const RootLayoutStyle = 
     (isSideBarExpanded
     ? styles.RootLayoutGrid

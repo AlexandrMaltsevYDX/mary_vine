@@ -13,4 +13,4 @@ function App() { // ! eslint ???
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
-export default withRouter(App); // ! eslint ???
+export default App; // ! eslint ???

@@ -32,8 +32,15 @@ export const ListItemExpanded: React.FC<SideBarItemInterface> = ({
   open,
 }) => {
   return (
-    <ListItemButton sx={{ height: "80px" }}>
-      <ListItemIcon>
+    <ListItemButton sx={{ padding: "0px", height: "56px" }}>
+      <ListItemIcon
+        sx={{
+          display: "flex",
+          justifyContent: "flex-start",
+          width: "66px",
+          pl: "34px"
+        }}
+      >
         {root && (
           <SendIcon
             sx={{
@@ -47,17 +54,31 @@ export const ListItemExpanded: React.FC<SideBarItemInterface> = ({
         primary={name}
         // secondary="залупа лисы"
         primaryTypographyProps={{
-          fontWeight: "600",
+          fontSize: "16px",
+          // fontWeight: "600",
           color: "primary.contrastText",
         }}
-        sx={{ pl: `${level * 12}px`, pr: "8px" }}
+        sx={{ pl: `${level * 8}px`, pr: "8px" }}
       />
-      {subItems &&
-        (open ? (
-          <ExpandLess sx={{ color: "primary.contrastText" }} />
-        ) : (
-          <ExpandMore sx={{ color: "primary.contrastText" }} />
-        ))}
+      <ListItemIcon
+        sx={{
+          display: "flex",
+          justifyContent: "flex-end",
+          width: "60px",
+          pr: "34px"
+        }}
+      >
+        {subItems &&
+          (open ? (
+            <ExpandLess
+              sx={{ color: "primary.contrastText", fontSize: "16px" }}
+            />
+          ) : (
+            <ExpandMore
+              sx={{ color: "primary.contrastText", fontSize: "16px" }}
+            />
+          ))}
+      </ListItemIcon>
     </ListItemButton>
   );
 };
@@ -71,26 +92,42 @@ export const ListItemColapsed: React.FC<SideBarItemInterface> = ({
   open,
 }) => {
   return (
-    <ListItemButton sx={{ height: "80px" }}>
-      {root ? <ListItemIcon>
-        {root && (
-          <SendIcon
-            sx={{
-              fontSize: "16px",
-              color: "primary.contrastText",
-            }}
-          />
-        )}
-      </ListItemIcon> :
-      <ListItemText
-        primary={name[0]}
-        // secondary="залупа лисы"
-        primaryTypographyProps={{
-          fontWeight: "600",
-          color: "primary.contrastText",
-        }}
-        sx={{ pl: `${level * 12}px`, pr: "8px" }}
-      /> }
+    <ListItemButton sx={{ padding: "0px", height: "56px" }}>
+      {root ? (
+        <ListItemIcon
+          sx={{ // ! <-----
+            display: "flex",
+            justifyContent: "flexStart",
+            width: "66px",
+            pl: "34px"
+          }}
+        >
+          {root && (
+            <SendIcon
+              sx={{
+                fontSize: "16px",
+                color: "primary.contrastText",
+              }}
+            />
+          )}
+        </ListItemIcon>
+      ) : (
+        <ListItemText
+          primary={name[0]}
+          // secondary="залупа лисы"
+          primaryTypographyProps={{
+            // fontWeight: "600",
+            color: "primary.contrastText",
+          }}
+          sx={{
+            // pl: `${level * 12}px`,
+            // pr: "8px",
+            display: "flex",
+            justifyContent: "center",
+            width: "80px",
+          }}
+        />
+      )}
     </ListItemButton>
   );
 };

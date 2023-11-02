@@ -41,37 +41,8 @@ const SideBarItem: React.FC<SideBarItemInterface> = ({
 
   return (
     <>
-      <ListItem  onClick={() => handleClick()} sx={{ padding: "0px", height: "80px" }}>
+      <ListItem  onClick={() => handleClick()} sx={{ padding: "0px", height: "56px" }}>
         <ListItemConstructor {...commonProps}/>
-        {/* <ListItemButton
-          sx={{ height: "80px" }}
-        >
-          <ListItemIcon>
-            {root && (
-              <SendIcon
-                sx={{
-                  fontSize: "16px",
-                  color: "primary.contrastText",
-                }}
-              />
-            )}
-          </ListItemIcon>
-          <ListItemText
-            primary={name}
-            // secondary="залупа лисы"
-            primaryTypographyProps={{
-              fontWeight: "600",
-              color: "primary.contrastText",
-            }}
-            sx={{ pl: `${level * 12}px`, pr: "8px" }}
-          />
-          {subItems &&
-            (open ? (
-              <ExpandLess sx={{ color: "primary.contrastText" }} />
-            ) : (
-              <ExpandMore sx={{ color: "primary.contrastText" }} />
-            ))}
-        </ListItemButton> */}
       </ListItem>
       <Box
         className="er"
@@ -90,7 +61,7 @@ const SideBarItem: React.FC<SideBarItemInterface> = ({
             name={item.name}
             root={item.root}
             subItems={item.subItems}
-            level={level + 1}
+            level={isSideBarExpanded ? level + 1 : level}
           />
         ))}
       </Box>
