@@ -16,6 +16,7 @@ export default defineConfig({
       '~features': path.resolve(__dirname, './src/04_features'),
       '~entities': path.resolve(__dirname, './src/05_entities'),
       '~shared': path.resolve(__dirname, './src/06_shared'),
+      '~images': path.resolve(__dirname, './pablic/images'),
       // '~': path.resolve(__dirname, './src'), // ! <=
     },
   },
