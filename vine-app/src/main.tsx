@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import { ThemeProvider } from "@mui/material";
 import { myTheme } from "~app/themes/my_thema";
 
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <Provider store={store}>
     <React.StrictMode>
