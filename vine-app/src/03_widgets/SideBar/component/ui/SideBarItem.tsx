@@ -28,7 +28,13 @@ const SideBarItem: React.FC<SideBarItemInterface> = ({
 }) => {
   const [open, setOpen] = React.useState(true);
 
-  const commonProps = { name, root, level, subItems, open };
+  const commonProps = { 
+    name, 
+    root, 
+    level, 
+    subItems, 
+    open, 
+  };
 
   const handleClick = () => {
     console.log(open);
@@ -41,8 +47,11 @@ const SideBarItem: React.FC<SideBarItemInterface> = ({
 
   return (
     <>
-      <ListItem  onClick={() => handleClick()} sx={{ padding: "0px", height: "56px" }}>
-        <ListItemConstructor {...commonProps}/>
+      <ListItem
+        onClick={() => handleClick()}
+        sx={{ padding: "0px", height: "56px" }}
+      >
+        <ListItemConstructor {...commonProps} />
       </ListItem>
       <Box
         className="er"

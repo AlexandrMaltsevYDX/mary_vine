@@ -15,22 +15,33 @@ const TopBar: React.FC = () => {
 
   const onOpenListener = () => {
     setIsSignInModalOpen(!isSignInModalOpen);
-  }
-
+  };
 
   return (
     <>
       <Toolbar
         disableGutters
-        sx={{ padding: "0", bgcolor: "primary.dark", height: "100%", justifyContent: "space-between", paddingRight: "15px" }}
+        sx={{
+          padding: "0",
+          bgcolor: "primary.dark",
+          height: "100%",
+          justifyContent: "space-between",
+          paddingRight: "15px",
+        }}
       >
         <SideBarToggleButton />
-        <ButtonGroup variant="contained" aria-label="outlined primary button group">
+        <ButtonGroup
+          variant="contained"
+          aria-label="outlined primary button group"
+        >
           <Button onClick={() => onOpenListener()}>Sign In</Button>
           <Button>Sign Up</Button>
           <Avatar alt="Remy Sharp" src="images/sample-avatar.jpg" />
         </ButtonGroup>
-        <SignInModalWindow open={isSignInModalOpen} handleClose={() => onOpenListener()} />
+        <SignInModalWindow
+          open={isSignInModalOpen}
+          handleClose={() => onOpenListener()}
+        />
       </Toolbar>
     </>
   );

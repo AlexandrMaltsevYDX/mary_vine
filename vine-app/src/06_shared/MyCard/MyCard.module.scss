@@ -1,0 +1,8 @@
+.MyCard {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+    grid-template-rows: 80px;
+    grid-template-areas:
+        "icon text"
+    ;
+}
