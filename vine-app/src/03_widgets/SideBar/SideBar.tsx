@@ -30,6 +30,7 @@ const SideBar: React.FC = () => {
             root={item.root}
             level={0}
             subItems={item.subItems}
+            url={item.url}
           />
         ))}
       </>

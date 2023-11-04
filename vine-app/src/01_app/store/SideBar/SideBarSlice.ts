@@ -92,7 +92,7 @@ export const sideBarSlice = createSlice({
           {
             name: "Мой профиль",
             root: false,
-            url: "/my_profile",
+            url: "/myprofile",
           },
         ],
       },

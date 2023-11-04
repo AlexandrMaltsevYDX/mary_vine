@@ -33,17 +33,18 @@ const fields: NestedFieldData = {
   name: {
     id: "name",
     label: "Name",
-    defaultValue: "Jhon",          //! <-- add typografy styles
+    defaultValue: "Jhon",
+    typogrphyStyle: {}, //! <-- add typografy styles
   },
   secondName: {
     id: "secondName",
     label: "SecondName",
-    defaultValue: "Dow",           //! <-- add typografy styles
+    defaultValue: "Dow", //! <-- add typografy styles
   },
   position: {
     id: "position",
     label: "Position",
-    defaultValue: "Manager",       //! <-- add typografy styles
+    defaultValue: "Manager", //! <-- add typografy styles
   },
   email: {
     id: "email",
@@ -53,17 +54,17 @@ const fields: NestedFieldData = {
   phone: {
     id: "phone",
     label: "Phone",
-    defaultValue: "+123123123123",  //! <-- add typografy styles
+    defaultValue: "+123123123123", //! <-- add typografy styles
   },
   birthday: {
     id: "birthday",
     label: "Birthday",
-    defaultValue: "birthday",       //! <-- add typografy styles
+    defaultValue: "birthday", //! <-- add typografy styles
   },
   messengers: {
     id: "messengers",
     label: "Messengers",
-    defaultValue: "messengers",     //! <-- add typografy styles
+    defaultValue: "messengers", //! <-- add typografy styles
   },
 };
 
@@ -103,16 +104,42 @@ const styles: MyCardStyles = {
   },
   Content: {
     display: "grid",
-    gridTemplateColumns: "30% 30% 1fr",
-    gridTemplateRows: "50px 50px 50px 50px 50px ",
+    gridTemplateColumns: { lg: "30% 30% 1fr", md: "auto auto", xs: "1fr" },
+    gridTemplateRows: {
+      lg: "50px 50px 50px 50px 50px ",
+      md: "50px 50px 50px 50px 50px auto",
+      xs: "50px 50px 50px 50px 50px 50px 50px 50px 50px auto",
+    },
     gap: "20px",
-    gridTemplateAreas: `
+    gridTemplateAreas: {
+      lg: `
       "name       email        businessCard"
       "secondName phone        businessCard"
       "position   birthday     businessCard"
       "messengers messengers   businessCard"
       "copyAllData editAllData businessCard"
     `,
+      md: `
+      "name       email        "
+      "secondName phone        "
+      "position   birthday     "
+      "messengers messengers   "
+      "copyAllData editAllData "
+      "businessCard businessCard "
+    `,
+      xs: `
+      "name"
+      "secondName"
+      "position"
+      "email"
+      "phone"
+      "birthday"
+      "messengers"
+      "copyAllData  "
+      "editAllData"
+      "businessCard "
+    `,
+    },
   },
   businessCard: {
     padding: "20px",

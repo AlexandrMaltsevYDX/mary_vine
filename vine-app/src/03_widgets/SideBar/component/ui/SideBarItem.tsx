@@ -1,6 +1,7 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import ListItem from "@mui/material/ListItem";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   toggleSideBar,
@@ -14,7 +15,7 @@ export interface SideBarItemInterface {
   name: string;
   root: boolean;
   level?: number;
-  // url?: string;
+  url?: string;
   subItems?: SideBarItemInterface[];
   open?: boolean;
 }
@@ -23,7 +24,7 @@ const SideBarItem: React.FC<SideBarItemInterface> = ({
   name,
   root,
   level = 1,
-  // url,
+  url,
   subItems,
 }) => {
   const [open, setOpen] = React.useState(true);
@@ -36,8 +37,11 @@ const SideBarItem: React.FC<SideBarItemInterface> = ({
     open, 
   };
 
+  const navigate = useNavigate();
+
   const handleClick = () => {
-    console.log(open);
+    console.log(url);
+    navigate(url);
     setOpen(!open);
   };
 
@@ -71,6 +75,7 @@ const SideBarItem: React.FC<SideBarItemInterface> = ({
             root={item.root}
             subItems={item.subItems}
             level={isSideBarExpanded ? level + 1 : level}
+            url={item.url}
           />
         ))}
       </Box>

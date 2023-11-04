@@ -3,17 +3,19 @@ import {
   createRoutesFromElements,
   Navigate,
   Route,
+  Routes,
   RouterProvider,
 } from "react-router-dom";
+import MyProfilePage from "~pages/MyProfilePage/MyProfilePage";
 import TestPage from "~pages/TestPage/TestPage";
 import TestSecondPage from "~pages/TestSecondPage/TestSecondPage";
 
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/">
+    <Route>
       <Route index element={<TestPage />} />
-      <Route path="/test" element={<TestSecondPage />} /> //! пример с пропсом loader
+      <Route path="/myprofile" element={<MyProfilePage/>} /> //! пример с пропсом loader
     </Route>,
   ),
 );
