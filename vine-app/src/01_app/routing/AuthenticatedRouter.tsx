@@ -9,6 +9,7 @@ import {
 import MyProfilePage from "~pages/MyProfilePage/MyProfilePage";
 import TestPage from "~pages/TestPage/TestPage";
 import TestSecondPage from "~pages/TestSecondPage/TestSecondPage";
+import Routing from "./Routing";
 
 
 const router = createBrowserRouter(

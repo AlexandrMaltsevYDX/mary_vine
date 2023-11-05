@@ -36,3 +36,5 @@ export default function SignInModalWindow({open, handleClose}) {
     </React.Fragment>
   );
 }
+
+// ! <---- add export def

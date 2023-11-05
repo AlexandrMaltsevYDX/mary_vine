@@ -9,12 +9,18 @@ import ButtonGroup from "@mui/material/ButtonGroup";
 import Button from "@mui/material/Button";
 import { Avatar } from "@mui/material";
 import SignInModalWindow from "~widgets/SignInModalWindow/SignInModalWindow";
+import SignUpModalWindow from "~widgets/SignUpModalWindow/SignUpModalWindow";
 // tollar провайдит цвет фона
 const TopBar: React.FC = () => {
   const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
+  const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
 
-  const onOpenListener = () => {
+  const toggleSignInModal = () => {
     setIsSignInModalOpen(!isSignInModalOpen);
+  };
+
+  const toggleSignUpModal = () => {
+    setIsSignUpModalOpen(!isSignUpModalOpen);
   };
 
   return (
@@ -34,13 +40,17 @@ const TopBar: React.FC = () => {
           variant="contained"
           aria-label="outlined primary button group"
         >
-          <Button onClick={() => onOpenListener()}>Sign In</Button>
-          <Button>Sign Up</Button>
+          <Button onClick={() => toggleSignInModal()}>Sign In</Button>
+          <Button onClick={() => toggleSignUpModal()}>Sign Up</Button>
           <Avatar alt="Remy Sharp" src="images/sample-avatar.jpg" />
         </ButtonGroup>
         <SignInModalWindow
           open={isSignInModalOpen}
-          handleClose={() => onOpenListener()}
+          handleClose={() => toggleSignInModal()}
+        />
+        <SignUpModalWindow
+          open={isSignUpModalOpen}
+          handleClose={() => toggleSignUpModal()}
         />
       </Toolbar>
     </>

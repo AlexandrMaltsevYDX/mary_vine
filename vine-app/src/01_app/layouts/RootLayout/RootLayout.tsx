@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Children, ReactNode, useState } from "react";
 import styles from "./RootLayout.module.scss";
 import Content from "~widgets/Content/Content";
 import TopBar from "~widgets/TopBar/TopBar";
@@ -11,11 +11,11 @@ import {
 
 import { RootState } from "~store/store";
 
-// interface RootLayoutInterface {
-//     children: React.ReactNode
-// }
+interface RootLayoutInterface {
+    children: React.ReactNode
+}
 
-const RootLayout: React.FC = () => {
+const RootLayout: React.FC<RootLayoutInterface> = ({children}) => {
   const isSideBarExpanded = useSelector(
     (state: RootState) => state.sideBar.expanded,
   );
@@ -33,7 +33,7 @@ const RootLayout: React.FC = () => {
         <TopBar />
       </div>
       <div className={styles.ContentCell}>
-        <Content />
+         {children}
       </div>
       <div className={styles.SidebarCell}>
         <SideBar />
@@ -43,3 +43,6 @@ const RootLayout: React.FC = () => {
 };
 
 export default RootLayout;
+
+
+{/* <Content /> */}

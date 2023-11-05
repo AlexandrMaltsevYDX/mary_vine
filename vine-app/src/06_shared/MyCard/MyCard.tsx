@@ -104,7 +104,11 @@ const styles: MyCardStyles = {
   },
   Content: {
     display: "grid",
-    gridTemplateColumns: { lg: "30% 30% 1fr", md: "auto auto", xs: "1fr" },
+    gridTemplateColumns: {
+      lg: "30% 30% 1fr",
+      md: "auto auto",
+      xs: "1fr",
+    },
     gridTemplateRows: {
       lg: "50px 50px 50px 50px 50px ",
       md: "50px 50px 50px 50px 50px auto",
@@ -144,7 +148,9 @@ const styles: MyCardStyles = {
   businessCard: {
     padding: "20px",
     gridArea: "businessCard",
-    backgroundColor: grey[200], // !<-------
+    border: `1px solid ${grey[400]}`,
+    boxShadow: "none",
+    // backgroundColor: grey[200], // !<-------
     display: "grid",
     gridTemplateColumns: "30% 30% 1fr",
     gridTemplateRows: "auto auto auto",
