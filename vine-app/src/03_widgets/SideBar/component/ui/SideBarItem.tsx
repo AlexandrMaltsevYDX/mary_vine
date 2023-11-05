@@ -24,7 +24,7 @@ const SideBarItem: React.FC<SideBarItemInterface> = ({
   name,
   root,
   level = 1,
-  url,
+  url="/",
   subItems,
 }) => {
   const [open, setOpen] = React.useState(true);
