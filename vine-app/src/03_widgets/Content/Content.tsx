@@ -4,9 +4,10 @@ import Routing from '~routing/Routing';
 import AppRouter from '~routing/AppRouter';
 
 
+
 const Content: React.FC = () => {
   return (
-    <div className={styles.Content}>
+    <div className={styles.Content}> 
       {/* <Routing/> */}
       <AppRouter/>
     </div>
