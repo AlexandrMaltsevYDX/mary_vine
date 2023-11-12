@@ -32,6 +32,8 @@ export default function DataTable() {
 
 
 
+
+
   const { data , error, isLoading } = useGetChartersQuery();
   // React.useEffect(() => {
   //   fetch("https://rickandmortyapi.com/api/character/", {})
