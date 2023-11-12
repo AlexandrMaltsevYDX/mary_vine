@@ -10,23 +10,42 @@ import { Avatar, Button } from "@mui/material";
 import { numberValueSorting } from "./features/SortingColumnValue";
 import SortIcon from "@mui/icons-material/Sort";
 import IconButton from "@mui/material/IconButton";
+import { useGetChartersQuery } from "~store/RickMorty/service";
 
 export default function DataTable() {
-  const [data, setData] = React.useState([]);
+  // const [data, setData] = React.useState([]);
+
+
+  //пагинация сортинг фильтрация на бэк
+
+  // const sort = ( nameCol, data) => {
+  //    const mapa = {
+  //     str: strValueSorting,
+  //     numb: numberValueSorting,
+  //     date: dateSortValueSorting,
+  //    }
+  //   return mapa()
+  // }
+
+
+
+
+
+
+  const { data , error, isLoading } = useGetChartersQuery();
+  // React.useEffect(() => {
+  //   fetch("https://rickandmortyapi.com/api/character/", {})
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setData(data.results);
+  //     })
+  //     .catch((error) => console.log(error));
+  // }, []);
 
   const nameSort = () => {
-    setData(numberValueSorting(data, "asc", "name"));
+    // numberValueSorting(data, "asc", "name"); // use callback
   };
-
-  React.useEffect(() => {
-    fetch("https://rickandmortyapi.com/api/character/", {})
-      .then((response) => response.json())
-      .then((data) => {
-        setData(data.results);
-      })
-      .catch((error) => console.log(error));
-  }, []);
-
+  if (isLoading) return <p>... Loading</p>
   return (
     <>
       <Button onClick={() => nameSort()}>Жопа</Button>
@@ -47,7 +66,7 @@ export default function DataTable() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map((row, index) => (
+            {data.results.map((row, index) => (
               <TableRow
                 key={index}
                 sx={{

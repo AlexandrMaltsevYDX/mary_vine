@@ -10,13 +10,14 @@ import MyProfilePage from "~pages/MyProfilePage/MyProfilePage";
 import TestPage from "~pages/TestPage/TestPage";
 import TestSecondPage from "~pages/TestSecondPage/TestSecondPage";
 import Routing from "./Routing";
-
+import UsersMainTest from "~pages/UsersMainTest/UsersMainTest";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
-      <Route index element={<TestPage />} />
-      <Route path="/myprofile" element={<MyProfilePage/>} /> //! пример с пропсом loader
+      <Route index element={<TestPage />} ></Route>
+      <Route path="/users" element={<UsersMainTest />} />
+      <Route path="/users/myprofile" element={<MyProfilePage />} />
     </Route>,
   ),
 );
