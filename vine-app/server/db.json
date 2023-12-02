@@ -143,5 +143,19 @@
       "email": "test@test.test",
       "password": "password"
     }
+  ],
+  "calculator": [
+    {
+      "id": "1",
+      "filename": "column1"
+    },
+    {
+      "id": "2",
+      "filename": "column1"
+    },
+    {
+      "id": "3",
+      "filename": "column1"
+    }
   ]
 }

@@ -9,19 +9,16 @@ import Paper from "@mui/material/Paper";
 import {Avatar, Button} from "@mui/material";
 import SortIcon from "@mui/icons-material/Sort";
 import IconButton from "@mui/material/IconButton";
-import {
-  useGetAllUsersQuery,
-  useGetPaginateUsersQuery,
-} from "~store/RickMorty/service.ts";
+
 import {InputLabel, MenuItem} from "@mui/material";
 import Select, {SelectChangeEvent} from "@mui/material/Select";
 import {SxProps} from "@mui/material";
-import useLocalStorageState from "~app/hooks/useLockalStorage";
+import {useGetTestDataQuery} from "~store/Calculator/CalculatorSlice";
 
-interface QueryParams {
-  column_name: string;
-  order: "asc" | "desc";
-}
+// interface QueryParams {
+//   column_name: string;
+//   order: "asc" | "desc";
+// }
 
 const ascIconStyle: SxProps = {
   transform: "scaleY(-1)",
@@ -47,18 +44,16 @@ const DataTable: FC = () => {
 
   // const [token, setToken] = useLocalStorageState('token', 'TEST_TOKEN')
 
-  const {data, isLoading, originalArgs} = useGetPaginateUsersQuery({
-    page: 1,
-    limit: 3,
-  });
+  const {data, isLoading} = useGetTestDataQuery({});
 
   const handleSortByColumn = (event: SelectChangeEvent): void => {
     setColumnName(event.target.value as string);
   };
-  const handleSortByOrder = () => {
-    console.log(data?.count);
-    order === "desc" ? setOrder("asc") : setOrder("desc");
-  };
+
+  //   const handleSortByOrder = () => {
+  //     console.log(data?.count);
+  //     order === "desc" ? setOrder("asc") : setOrder("desc");
+  //   };
 
   const handleSortByColumnOrder = (event: MouseEvent<HTMLElement>) => {
     const columnName = event.currentTarget.textContent; // or textContent
@@ -69,19 +64,8 @@ const DataTable: FC = () => {
   if (isLoading) return <p>... Loading</p>;
   return (
     <>
-      <InputLabel id="demo-simple-select-label">Sort by Column</InputLabel>
-      <Select
-        labelId="demo-simple-select-label"
-        id="demo-simple-select"
-        value={columnName}
-        label="Age"
-        onChange={handleSortByColumn}>
-        <MenuItem value={"id"}>id</MenuItem>
-        <MenuItem value={"name"}>name</MenuItem>
-      </Select>
-      <Button onClick={() => handleSortByOrder()}>{order}</Button>
-      <TableContainer component={Paper}>
-        <Table sx={{minWidth: 650}} aria-label="simple table">
+      <TableContainer component={Paper} sx={{mt: 4, maxWidth: 250}}>
+        <Table sx={{maxWidth: 250}} aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell onClick={e => handleSortByColumnOrder(e)}>
@@ -90,19 +74,11 @@ const DataTable: FC = () => {
                 </IconButton>
                 id
               </TableCell>
-              <TableCell align="right">image</TableCell>
-              <TableCell
-                onClick={e => handleSortByColumnOrder(e)}
-                align="right">
-                <IconButton>
-                  <SortIcon sx={iconStyle[order as keyof iconStyleInterface]} />
-                </IconButton>
-                name
-              </TableCell>
+              <TableCell align="right">filename</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {data?.response.map((row, index) => (
+            {data?.map((row, index) => (
               <TableRow
                 key={index}
                 sx={{
@@ -111,10 +87,9 @@ const DataTable: FC = () => {
                 <TableCell component="th" scope="row">
                   {row.id}
                 </TableCell>
-                <TableCell align="right" sx={{display: "flex"}}>
-                  <Avatar alt={row.name} src={row.avatar} />
+                <TableCell align="right" scope="row">
+                  {row.filename}
                 </TableCell>
-                <TableCell align="right">{row.name}</TableCell>
               </TableRow>
             ))}
           </TableBody>
