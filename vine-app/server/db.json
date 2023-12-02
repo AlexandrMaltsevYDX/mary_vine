@@ -1,0 +1,147 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Charmeleon",
+      "avatar": "/images/Charmeleon.png"
+    },
+    {
+      "id": 2,
+      "name": "Beedrill",
+      "avatar": "/images/Beedrill.png"
+    },
+    {
+      "id": 3,
+      "name": "Charmander",
+      "avatar": "/images/Charmander.png"
+    },
+    {
+      "id": 4,
+      "name": "Charizard",
+      "avatar": "/images/Charizard.png"
+    },
+    {
+      "id": 5,
+      "name": "Wartortle",
+      "avatar": "/images/Wartortle.png"
+    },
+    {
+      "id": 6,
+      "name": "Kakuna",
+      "avatar": "/images/Kakuna.png"
+    },
+    {
+      "id": 7,
+      "name": "Graveler",
+      "avatar": "/images/Graveler.png"
+    },
+    {
+      "id": 8,
+      "name": "Pikachu",
+      "avatar": "/images/Pikachu.png"
+    },
+    {
+      "id": 9,
+      "name": "Psyduck",
+      "avatar": "/images/Psyduck.png"
+    },
+    {
+      "id": 10,
+      "name": "Raichu",
+      "avatar": "/images/Raichu.png"
+    },
+    {
+      "id": 11,
+      "name": "Squirtle",
+      "avatar": "/images/Squirtle.png"
+    },
+    {
+      "id": 12,
+      "name": "Sandshrew",
+      "avatar": "/images/Sandshrew.png"
+    },
+    {
+      "id": 13,
+      "name": "Ivysaur",
+      "avatar": "/images/Ivysaur.png"
+    },
+    {
+      "id": 14,
+      "name": "Butterfree",
+      "avatar": "/images/Butterfree.png"
+    },
+    {
+      "id": 15,
+      "name": "Pidgey",
+      "avatar": "/images/Pidgey.png"
+    },
+    {
+      "id": 16,
+      "name": "Metapod",
+      "avatar": "/images/Metapod.png"
+    },
+    {
+      "id": 17,
+      "name": "Weedle",
+      "avatar": "/images/Weedle.png"
+    },
+    {
+      "id": 18,
+      "name": "Caterpie",
+      "avatar": "/images/Caterpie.png"
+    },
+    {
+      "id": 19,
+      "name": "Gengar",
+      "avatar": "/images/Gengar.png"
+    },
+    {
+      "id": 20,
+      "name": "Blastoise",
+      "avatar": "/images/Blastoise.png"
+    },
+    {
+      "id": 21,
+      "name": "Bulbasaur",
+      "avatar": "/images/Bulbasaur.png"
+    },
+    {
+      "id": 22,
+      "name": "Onix",
+      "avatar": "/images/Onix.png"
+    },
+    {
+      "id": 23,
+      "name": "Geodude",
+      "avatar": "/images/Geodude.png"
+    },
+    {
+      "id": 24,
+      "name": "Pidgeotto",
+      "avatar": "/images/Pidgeotto.png"
+    },
+    {
+      "id": 25,
+      "name": "Venusaur",
+      "avatar": "/images/Venusaur.png"
+    },
+    {
+      "id": 26,
+      "name": "Pidgeot",
+      "avatar": "/images/Pidgeot.png"
+    }
+  ],
+  "login": [
+    {
+      "id": "1",
+      "email": "test@test.test",
+      "password": "password",
+      "token": "token"
+    },
+    {
+      "id": 2,
+      "email": "test@test.test",
+      "password": "password"
+    }
+  ]
+}

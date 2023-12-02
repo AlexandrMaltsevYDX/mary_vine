@@ -1,4 +1,4 @@
-import * as React from "react";
+import {FC, MouseEvent, useState} from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -6,84 +6,113 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Avatar, Button } from "@mui/material";
-import { numberValueSorting } from "./features/SortingColumnValue";
+import {Avatar, Button} from "@mui/material";
 import SortIcon from "@mui/icons-material/Sort";
 import IconButton from "@mui/material/IconButton";
-import { useGetChartersQuery } from "~store/RickMorty/service";
+import {useGetAllUsersQuery, useGetPaginateUsersQuery} from "~store/RickMorty/service.ts";
+import {InputLabel, MenuItem} from "@mui/material";
+import Select, {SelectChangeEvent} from "@mui/material/Select";
+import {SxProps} from "@mui/material";
+import useLocalStorageState from "~app/hooks/useLockalStorage";
 
-export default function DataTable() {
-  // const [data, setData] = React.useState([]);
+interface QueryParams {
+  column_name: string;
+  order: "asc" | "desc";
+}
 
+const ascIconStyle: SxProps = {
+  transform: "scaleY(-1)",
+};
 
-  //пагинация сортинг фильтрация на бэк
+const descIconStyle: SxProps = {
+  transform: "scaleY(1)",
+};
 
-  // const sort = ( nameCol, data) => {
-  //    const mapa = {
-  //     str: strValueSorting,
-  //     numb: numberValueSorting,
-  //     date: dateSortValueSorting,
-  //    }
-  //   return mapa()
-  // }
+interface iconStyleInterface {
+  asc: SxProps;
+  desc: SxProps;
+}
 
+const iconStyle = {
+  asc: ascIconStyle,
+  desc: descIconStyle,
+};
 
+const DataTable: FC = () => {
+  const [columnName, setColumnName] = useState("id");
+  const [order, setOrder] = useState("asc");
 
+  const [token, setToken] = useLocalStorageState('token', 'TEST_TOKEN')
 
+  
+  const {data, isLoading, originalArgs} = useGetPaginateUsersQuery({
+    page: 1,
+    limit: 3,
+  });
 
-
-
-
-  const { data , error, isLoading } = useGetChartersQuery();
-  // React.useEffect(() => {
-  //   fetch("https://rickandmortyapi.com/api/character/", {})
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setData(data.results);
-  //     })
-  //     .catch((error) => console.log(error));
-  // }, []);
-
-  const nameSort = () => {
-    // numberValueSorting(data, "asc", "name"); // use callback
+  const handleSortByColumn = (event: SelectChangeEvent): void => {
+    setColumnName(event.target.value as string);
   };
-  if (isLoading) return <p>... Loading</p>
+  const handleSortByOrder = () => {
+    console.log(data?.count);
+    order === "desc" ? setOrder("asc") : setOrder("desc");
+  };
+
+  const handleSortByColumnOrder = (event: MouseEvent<HTMLElement>) => {
+    const columnName = event.currentTarget.textContent; // or textContent
+    setColumnName(columnName as string);
+    order === "desc" ? setOrder("asc") : setOrder("desc");
+  };
+
+  if (isLoading) return <p>... Loading</p>;
   return (
     <>
-      <Button onClick={() => nameSort()}>Жопа</Button>
+      <InputLabel id="demo-simple-select-label">Sort by Column</InputLabel>
+      <Select
+        labelId="demo-simple-select-label"
+        id="demo-simple-select"
+        value={columnName}
+        label="Age"
+        onChange={handleSortByColumn}>
+        <MenuItem value={"id"}>id</MenuItem>
+        <MenuItem value={"name"}>name</MenuItem>
+      </Select>
+      <Button onClick={() => handleSortByOrder()}>{order}</Button>
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <Table sx={{minWidth: 650}} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell sx={{ width: 20 }}>id</TableCell>
+              <TableCell onClick={e => handleSortByColumnOrder(e)}>
+                <IconButton>
+                  <SortIcon sx={iconStyle[order as keyof iconStyleInterface]} />
+                </IconButton>
+                id
+              </TableCell>
               <TableCell align="right">image</TableCell>
-              <TableCell align="right">
-                <IconButton onClick={() => nameSort()}>
-                  <SortIcon />
+              <TableCell
+                onClick={e => handleSortByColumnOrder(e)}
+                align="right">
+                <IconButton>
+                  <SortIcon sx={iconStyle[order as keyof iconStyleInterface]} />
                 </IconButton>
                 name
               </TableCell>
-              <TableCell align="right">status</TableCell>
-              <TableCell align="right">species</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.results.map((row, index) => (
+            {data?.response.map((row, index) => (
               <TableRow
                 key={index}
                 sx={{
-                  "&:last-child td, &:last-child th": { border: 0 },
-                }}
-              >
+                  "&:last-child td, &:last-child th": {border: 0},
+                }}>
                 <TableCell component="th" scope="row">
                   {row.id}
                 </TableCell>
-                <TableCell align="right" sx={{ display: "flex" }}>
-                  <Avatar alt={row.name} src={row.image} />
+                <TableCell align="right" sx={{display: "flex"}}>
+                  <Avatar alt={row.name} src={row.avatar} />
                 </TableCell>
                 <TableCell align="right">{row.name}</TableCell>
-                <TableCell align="right">{row.status}</TableCell>
-                <TableCell align="right">{row.species}</TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -91,4 +120,6 @@ export default function DataTable() {
       </TableContainer>
     </>
   );
-}
+};
+
+export default DataTable;

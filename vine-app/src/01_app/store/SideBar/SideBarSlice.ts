@@ -5,7 +5,7 @@ export const sideBarSlice = createSlice({
   name: "sideBar",
   initialState: {
     //! state
-    expanded: false,
+    expanded: true,
     data: [
       // ! add icons to object
       {
@@ -97,16 +97,17 @@ export const sideBarSlice = createSlice({
         ],
       },
     ],
+    
   },
   reducers: {
     toggleSideBar: (state) => {
       state.expanded = !state.expanded;
     },
-    getSidbarData: (state, action) => {
+    getSideBarData: (state, action) => {
       state.data = action.payload;
     },
   },
 });
 
-export const { toggleSideBar, getSidbarData } = sideBarSlice.actions;
+export const { toggleSideBar, getSideBarData } = sideBarSlice.actions;
 export default sideBarSlice.reducer;

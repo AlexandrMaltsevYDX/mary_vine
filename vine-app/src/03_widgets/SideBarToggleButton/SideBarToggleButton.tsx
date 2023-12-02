@@ -5,7 +5,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   toggleSideBar,
-  getSidbarData,
+  getSideBarData,
 } from "~store/SideBar/SideBarSlice";
 
 import { RootState } from "~store/store";
